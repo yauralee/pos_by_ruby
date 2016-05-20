@@ -3,19 +3,6 @@ require 'item.rb'
 
 class Output
 
-  def generate_one_item(special_list,input_text)
-    items = Array.new
-    input_text.each do |j|
-      item = Item.new
-      item.name = j[/1.*at/]
-      item.primary_price = j[/ at.*/].to_s.split(/at/)[1]
-      item.ask_import(j)
-      item.ask_special(j,special_list)
-      items.push(item)
-    end
-    items
-  end
-
   def output(special_list,input_text)
     sales_taxes = 0
     total = 0
@@ -27,10 +14,25 @@ class Output
       sales_taxes += each_tax
       total += each_price
     end
-    puts 'Sales Taxes: ' + sales_taxes.to_s
-    puts 'Total: ' + total.to_s
-
+    st = 'Sales Taxes: ' + sales_taxes.to_s
+    tl =  'Total: ' + total.to_s
+    st+"\\n"+tl+"\\n"
   end
+
+  def generate_one_item(special_list,input_text)
+    items = Array.new
+    input_text.each do |j|
+      item = Item.new
+      item.name = j[/1.*at/]
+      item.primary_price = j[/ at.*/].to_s.split(/at/)[1]
+      item.ask_import(j)
+      item.ask_special(j,special_list)
+      items.push(item)
+    end
+    puts items[2].name+items[2].primary_price
+    items
+  end
+
 end
 
 op = Output.new

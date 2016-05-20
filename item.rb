@@ -9,6 +9,7 @@ class Item
         break
       end
     end
+    is_special
   end
 
   def ask_import(each_input)
@@ -36,7 +37,6 @@ class Item
 
   def calEachPrice
     ((self.calEachTax + primary_price.to_s.to_f)*100).round.to_f/100
-
   end
 
 end
