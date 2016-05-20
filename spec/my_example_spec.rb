@@ -7,14 +7,15 @@ RSpec.describe 'generate_one_item' do
     out = Output.new
     special_list = ["book","chocolate","pills"]
     input_text = ["1 book at 12.49","1 music CD at 14.99","1 chocolate bar at 0.85"]
+    #每次都要这么把special list 赋进去么? 是不是可以考虑在method里面去访问special list再进一步操作
     result = out.generate_one_item(special_list,input_text)
-    expect(result[0].name+result[0].primary_price).to eq('1 book at 12.49')
+    expect(result[0].name+result[0].primary_price).to eq('1 book at 12.49') #remove puts
     expect(result[1].name+result[1].primary_price).to eq('1 music CD at 14.99')
     expect(result[2].name+result[2].primary_price).to eq('1 chocolate bar at 0.85')
   end
 end
 
-RSpec.describe 'output' do
+RSpec.describe 'output' do # 学习一下rspec test的写法 rspec best practise
   it 'should return true' do
     out = Output.new
     special_list = ["book","chocolate","pills"]

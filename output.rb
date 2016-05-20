@@ -1,9 +1,10 @@
 $LOAD_PATH << '.'
 require 'item.rb'
 
-class Output
 
-  def output(special_list,input_text)
+class Output #TODO name should be more sensible
+
+  def output(special_list,input_text) # Seems like a tool class
     sales_taxes = 0
     total = 0
     items = generate_one_item(special_list,input_text)
