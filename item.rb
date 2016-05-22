@@ -2,7 +2,8 @@ class Item
 
   attr_accessor :name,:primary_price,:is_special,:is_import
 
-  def ask_special(each_input,special_list)
+  def ask_special(each_input)
+    special_list = ["book","chocolate","pills"]
     special_list.each do |k|
       self.is_special = each_input.include?(k) ? true : false
       if is_special
@@ -29,8 +30,6 @@ class Item
     else
       import_tax = 0
     end
-    # puts special_tax
-    # puts import_tax
     ((special_tax + import_tax)*100).round.to_f/100
   end
 
