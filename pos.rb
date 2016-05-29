@@ -18,10 +18,6 @@ class Pos
     end
     [@each_item_price_array, @total_tax, @total_price]
   end
-  #
-  # items = [Item.new('1 book at 12.49'), Item.new('1 music CD at 14.99'), Item.new('1 chocolate bar at 0.85')]
-  # pos = Pos.new
-  # pos.calculate_bill(items)
 
 end
 
